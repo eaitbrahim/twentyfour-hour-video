@@ -8,7 +8,7 @@ provider:
   profile: slsUserSandbox
 
 custom:
-  upload-bucket: upload-video-ea-bucket
+  upload-bucket: upload-video-ea-s3-bucket
   transcode-bucket: transcoded-video-bucket-ea
   transcode-video-role: arn:aws:iam::960305759700:role/transcode-video-ea-role 
   media-endpoint: https://4l8tgbpha.mediaconvert.us-west-2.amazonaws.com

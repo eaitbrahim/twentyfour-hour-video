@@ -5,13 +5,14 @@ provider:
   name: aws
   runtime: nodejs16.x
   region: us-east-1
+  profile: slsUserSandbox
 
 custom:
-  upload-bucket: upload-video-bucket-ea
+  upload-bucket: upload-video-ea-bucket
   transcode-bucket: transcoded-video-bucket-ea
-  transcode-video-role: arn:aws:iam::117771065608:role/transcode-video 
+  transcode-video-role: arn:aws:iam::960305759700:role/transcode-video-ea-role 
   media-endpoint: https://4l8tgbpha.mediaconvert.us-west-2.amazonaws.com
-  media-role: arn:aws:iam::117771065608:role/media-convert-role
+  media-role: arn:aws:iam::960305759700:role/media-convert-ea-role
 
 functions:
   transcode-video:
@@ -22,6 +23,6 @@ functions:
     environment:
       MEDIA_ENDPOINT: ${self:custom.media-endpoint}
       MEDIA_ROLE: ${self:custom.media-role}
-      TRANSCODED_VIDEO_BUCKET: ${slef:custom.transcode-bucket}
+      TRANSCODED_VIDEO_BUCKET: ${self:custom.transcode-bucket}
     events:
       - s3: ${self:custom.upload-bucket}

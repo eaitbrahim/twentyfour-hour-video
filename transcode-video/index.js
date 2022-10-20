@@ -2,7 +2,7 @@
 
 const AWS = require('aws-sdk');
 const mediaConvert = new AWS.MediaConvert({
-  endpoint: ProcessingInstruction.env.MEDIA_ENDPOINT
+  endpoint: process.env.MEDIA_ENDPOINT
 });
 const outputBucketName = process.env.TRANSCODED_VIDEO_BUCKET;
 
@@ -13,10 +13,10 @@ exports.handler = async (event, context) => {
 
   const input = `s3://${event.Records[0].s3.bucket.name}/${event.Records[0].s3.object.key}`;
   const output = `s3://${outputBucketName}/${outputKey}`;
-  
+
   try{
     const job = {
-      'Role': process.env.MEDIA_ROLES,
+      'Role': process.env.MEDIA_ROLE,
       'Settings': {
         'Inputs': [{
           'FileInput': input,
@@ -54,7 +54,7 @@ exports.handler = async (event, context) => {
     };
 
     const mediaConvertResult = await mediaConvert.createJob(job).promise();
-    console.log(mediaConvertResult);
+    console.log('mediaConvertResult:', mediaConvertResult);
   } catch(error) {
     console.error(error);
   }

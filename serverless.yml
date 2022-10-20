@@ -9,9 +9,9 @@ provider:
 
 custom:
   upload-bucket: upload-video-ea-s3-bucket
-  transcode-bucket: transcoded-video-bucket-ea
+  transcode-bucket: transcoded-video-ea-s3-bucket
   transcode-video-role: arn:aws:iam::960305759700:role/transcode-video-ea-role 
-  media-endpoint: https://4l8tgbpha.mediaconvert.us-west-2.amazonaws.com
+  media-endpoint: https://q25wbt2lc.mediaconvert.us-east-1.amazonaws.com
   media-role: arn:aws:iam::960305759700:role/media-convert-ea-role
 
 functions:
